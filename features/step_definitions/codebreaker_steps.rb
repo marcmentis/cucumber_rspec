@@ -16,15 +16,18 @@ end
 
 When(/^I start a new game$/) do
   # Codebreaker::Game.new.start
-  game = Codebreaker::Game.new(output) 
+  @myoutput = Output.new
+  game = Codebreaker::Game.new(@myoutput) 
   game.start
 end
 
 Then(/^I should see "(.*?)"$/) do |message|
-	output = Output.new
+
+	# output = Output.new
 	# stub_message = output.messages
+	# puts "STUB_MESSAGE: #{stub_message}"
 	# stub_message.should include(message)
-	expect(output.messages).to include(message)
+	expect(@myoutput.messages).to include(message)
 
   # output.messages.should include(message)
 end
