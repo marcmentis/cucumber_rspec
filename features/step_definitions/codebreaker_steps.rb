@@ -18,23 +18,24 @@ When(/^I start a new game$/) do
   # Codebreaker::Game.new.start
   @myoutput = Output.new
   game = Codebreaker::Game.new(@myoutput) 
-  game.start
+  game.start('1234')
 end
 
 Then(/^I should see "(.*?)"$/) do |message|
-
-	# output = Output.new
-	# stub_message = output.messages
-	# puts "STUB_MESSAGE: #{stub_message}"
-	# stub_message.should include(message)
 	expect(@myoutput.messages).to include(message)
-
-  # output.messages.should include(message)
 end
 
-# Then /^I should see "([^"]*)"$/ do |message|
-#   output.messages.should include(message)
-# end
+Given(/^the secret code is "(.*?)"$/) do |secret|
+  @myoutput = Output.new
+  game = Codebreaker::Game.new(@myoutput)
+  game.start(secret)
+end
+
+When(/^I guess "(.*?)"$/) do |guess|
+  @myoutput = Output.new
+  game = Codebreaker::Game.new(@myoutput)
+  game.guess(guess)
+end
 
 
 
