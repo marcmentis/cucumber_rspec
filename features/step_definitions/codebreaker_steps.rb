@@ -30,7 +30,7 @@ end
 
 #STEPS FOR CODEBREAKER_SUBMITS_GUESS.FEATURE
 Given(/^the secret code is "(.*?)"$/) do |secret|
-	output
+	# output
   @myoutput = Output.new
   @game = Codebreaker::Game.new(@myoutput)
   @game.start(secret)
